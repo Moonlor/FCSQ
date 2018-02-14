@@ -1,0 +1,79 @@
+<% if signed_in? %>
+  <div class="row clearfix">
+    <aside class="col-md-4 column">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8 column">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+
+<div class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text text-lighten-2">
+        Welcome to Min T
+      </h1>
+      <div class="row center">
+        <h5 class="header col s12 light white-text">
+          一个大概是可以自娱自乐的地方
+        </h5>
+      </div>
+      <div class="row center">
+        <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax">
+    <%= image_tag("https://s1.ax2x.com/2018/02/13/yUGWH.jpg", alt: "Rails")%>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 center">
+        <h3><i class="mdi-content-send brown-text"></i></h3>
+        <h4>在这里分享你的快乐</h4>
+        <p class="center-align light">不过现在数据库里的用户都是生成的机器人诶</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 light"></h5>
+      </div>
+    </div>
+  </div>
+  <div class="parallax"><img src="https://s1.ax2x.com/2018/02/13/yUWUS.jpg" alt="bg2" style="display: block; transform: translate3d(-50%, 180px, 0px);"></div>
+</div>
+<!-- <div class="center hero-unit">
+  <h1>Welcome to the Mini Twitter</h1>
+  <h2>
+    This is the home page for Mini Twitter.
+  </h2>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+<div class="parallax-container">
+  <div class="parallax">
+    <%= link_to image_tag("http://rubyonrails.org/images/rails-logo.svg", alt: "Rails"), 'http://rubyonrails.org/' %>
+  </div>
+</div> -->
+<% end %>

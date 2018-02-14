@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+<!--     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" %> -->
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+        <% flash.each do |key, value| %>
+      <div style="padding-top: 30px" class="alert alert-<%= key %>" ><%= value %>
+        <script type="text/javascript">
+          window.onload = function () {
+            Materialize.toast(<%= raw alert_message(value) %>, 4000)
+          }
+        </script>
+      </div>
+    <% end %>
+    </div>
+    <% if yield(:title).empty? && !signed_in?%>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    <% else %>
+      <div class="container">
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+      </div>
+      <%= render 'layouts/footer' %>
+    <% end %>
+  </body>
+</html>
