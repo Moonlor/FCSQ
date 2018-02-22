@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208164455) do
+ActiveRecord::Schema.define(version: 20180218145934) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20180208164455) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.string "depart_city"
+    t.string "final_city"
+    t.integer "via_city_number"
+    t.date "depart_date"
+    t.date "final_date"
+    t.integer "user_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_schedules_on_user_id_and_created_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -40,6 +53,14 @@ ActiveRecord::Schema.define(version: 20180208164455) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
+  end
+
+  create_table "via_city_names", force: :cascade do |t|
+    t.string "city_name"
+    t.integer "user_id"
+    t.integer "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

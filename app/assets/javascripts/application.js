@@ -14,7 +14,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require bootstrap
-//= require materialize
 //= require_tree .
 
 (function($){
@@ -24,6 +23,22 @@
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    $('#schedule_via_city_number').change(function(){
+      var val = this.value;
+      $(".ajax_form_for_city_names").remove();
+      $.ajax({
+      	url: "/loadcity",
+      	data: {
+      	  amount: val
+      	},
+      	dataType:"script"
+      })
+    });
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

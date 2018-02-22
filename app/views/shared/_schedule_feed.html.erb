@@ -1,0 +1,6 @@
+<% if @schedule_items.any? %>
+  <ul class="schedules">
+    <%= render partial: 'shared/schedule_item', collection: @schedule_items %>
+  </ul>
+  <%= will_paginate @schedule_items %>
+<% end %>

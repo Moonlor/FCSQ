@@ -1,5 +1,5 @@
 <% if signed_in? %>
-  <div class="row clearfix">
+  <div class="row clearfix" style="padding-top: 30px">
     <aside class="col-md-4 column">
       <section>
         <%= render 'shared/user_info' %>
@@ -12,8 +12,14 @@
       </section>
     </aside>
     <div class="col-md-8 column">
+      <h3>Making your schedule</h3>
+      <section>
+        <%= render 'shared/schedule_form' %>
+      </section>
       <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
+      <section>
+        <%= render 'shared/feed' %>
+      </section>
     </div>
   </div>
 <% else %>
@@ -64,16 +70,5 @@
   </div>
   <div class="parallax"><img src="https://s1.ax2x.com/2018/02/13/yUWUS.jpg" alt="bg2" style="display: block; transform: translate3d(-50%, 180px, 0px);"></div>
 </div>
-<!-- <div class="center hero-unit">
-  <h1>Welcome to the Mini Twitter</h1>
-  <h2>
-    This is the home page for Mini Twitter.
-  </h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
-<div class="parallax-container">
-  <div class="parallax">
-    <%= link_to image_tag("http://rubyonrails.org/images/rails-logo.svg", alt: "Rails"), 'http://rubyonrails.org/' %>
-  </div>
-</div> -->
+
 <% end %>

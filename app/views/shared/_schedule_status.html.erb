@@ -1,0 +1,15 @@
+<div class="card-panel green lighten-5">
+<% @user ||= current_user %>
+<div class="stats">
+  <section>
+  	<strong> <%= @user.schedules.count %> schedules: </strong>
+  </section>
+  <section>
+  	<%= @user.status_count(0)%> being calculating
+  </section>
+  <section>
+  	<%= @user.status_count(1)%> finished
+  </section>
+
+</div>
+</div>

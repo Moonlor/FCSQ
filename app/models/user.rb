@@ -6,6 +6,7 @@ class User < ApplicationRecord
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :schedules, dependent: :destroy
   
 
   before_save { self.email = email.downcase }
@@ -20,6 +21,10 @@ class User < ApplicationRecord
 
   def feed
     Micropost.from_users_followed_by(self)
+  end
+
+  def status_count(status_code)
+    Schedule.where("status = ?", status_code).count
   end
 
   def User.new_remember_token

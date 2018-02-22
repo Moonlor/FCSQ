@@ -1,3 +1,4 @@
+<div class="card-panel green lighten-5">
 <% @user ||= current_user %>
 <div class="stats">
   <a href="<%= following_user_path(@user) %>">
@@ -11,4 +12,6 @@
       <%= @user.followers.count %>
     </strong>
     followers
-</a> </div>
+</a> 
+</div>
+</div>

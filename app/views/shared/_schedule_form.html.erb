@@ -1,0 +1,33 @@
+<div class="card-panel green lighten-5">
+  <%= form_for @schedule do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="input-field col s6">
+  	  <%= f.select(:depart_city, cities) %>
+      <label>出发城市</label>
+    </div>
+    <div class="input-field col s6">
+  	  <%= f.select(:final_city, cities) %>
+      <label>到达城市</label>
+    </div>
+    <div class="input-field col s12">
+  	  <%= f.select(:via_city_number, city_number) %>
+  	  <label>途经城市数量</label>
+    </div>
+    <div id = "via"></div>
+    <section class="col s6">
+      <label>出发时间</label>
+      <%= date_field(:schedule, :depart_date, class: 'datepicker') %>
+    </section>
+    <section class="col s6">
+      <label>返回时间</label>
+      <%= date_field(:schedule, :final_date, class: 'datepicker') %>
+    </section>
+    
+    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+
+
+
