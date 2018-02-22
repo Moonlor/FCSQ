@@ -1,6 +1,6 @@
 module SchedulesHelper
   
-  require 'CSV'
+  require 'csv'
 
   def cities
   	city = []
