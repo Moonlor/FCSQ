@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :signed_in_user , only: [:index, :create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   def create
   	@schedule = current_user.schedules.build(schedule_params)
@@ -27,6 +28,11 @@ class SchedulesController < ApplicationController
   	@schedule_items = current_user.schedules.paginate(page: params[:page])
   end
 
+  def destroy
+    @schedule.destroy
+    redirect_to schedules_path
+  end
+
 
 
 
@@ -35,6 +41,11 @@ class SchedulesController < ApplicationController
     def schedule_params
   	  params.require(:schedule).permit(:depart_city, :final_city, :via_city_number, 
   		                         :password_confirmation, :depart_date, :final_date)
+    end
+
+    def correct_user
+      @schedule = current_user.schedules.find_by(id: params[:id])
+      redirect_to schedules if @schedule.nil?
     end
   
 end
