@@ -1,3 +1,3 @@
 # FCSQ
 
-使用materialize
+完全使用materialize
