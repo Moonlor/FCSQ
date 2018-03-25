@@ -8,13 +8,15 @@ class SchedulesController < ApplicationController
   	@schedule.status = 0
   	if @schedule.save
   	  flash[:success] = "Well done, Next step!"
-  	  params[:via_city_name][:names].each do |name|
-  	  	@via_city = @schedule.via_city_names.build
-  	  	@via_city.user_id = current_user.id
-  	  	@via_city.city_name = name
-  	  	@via_city.schedule_id = @schedule.id
-  	  	@via_city.save
-  	  end
+      if params.include?(:via_city_name)
+        params[:via_city_name][:names].each do |name|
+          @via_city = @schedule.via_city_names.build
+          @via_city.user_id = current_user.id
+          @via_city.city_name = name
+          @via_city.schedule_id = @schedule.id
+          @via_city.save
+				end
+      end
   	  pp params
   	  redirect_to schedules_path
   	else
