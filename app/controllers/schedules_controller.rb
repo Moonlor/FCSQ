@@ -6,15 +6,19 @@ class SchedulesController < ApplicationController
   	@schedule = current_user.schedules.build(schedule_params)
   	@schedule.user_id = current_user.id
   	@schedule.status = 0
-  	if @schedule.save
-  	  flash[:success] = "Well done, Next step!"
-  	  params[:via_city_name][:names].each do |name|
-  	  	@via_city = @schedule.via_city_names.build
-  	  	@via_city.user_id = current_user.id
-  	  	@via_city.city_name = name
-  	  	@via_city.schedule_id = @schedule.id
-  	  	@via_city.save
-  	  end
+    @schedule.isstop = params[:isstop]
+    @schedule.flight_day = params[:flight_day]
+    if @schedule.save
+      flash[:success] = "Well done, Next step!"
+      if params.include?(:via_city_name)
+        params[:via_city_name][:names].each do |name|
+          @via_city = @schedule.via_city_names.build
+          @via_city.user_id = current_user.id
+          @via_city.city_name = name
+          @via_city.schedule_id = @schedule.id
+          @via_city.save
+        end
+      end
   	  pp params
   	  redirect_to schedules_path
   	else
@@ -40,7 +44,10 @@ class SchedulesController < ApplicationController
 
     def schedule_params
   	  params.require(:schedule).permit(:depart_city, :final_city, :via_city_number, 
-  		                         :password_confirmation, :depart_date, :final_date)
+  		                         :password_confirmation, :depart_date, :final_date,
+                               :isstop, :flight_day, :ontime_rate, :seat_type, :earliest_dept_time, :latest_arv_time,:hotel_type,
+                               :hotel_star, :lowest_price, :highest_price, :hotel_score, :user_recommend, :user_number
+                               )
     end
 
     def correct_user

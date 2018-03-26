@@ -1,7 +1,11 @@
 <div class="card-panel green lighten-5">
+
+
   <%= form_for @schedule do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
+
+    <section class="col s12"><h5>基础选项</h3></section>
     <div class="input-field col s6">
   	  <%= f.select(:depart_city, cities) %>
       <label>出发城市</label>
@@ -15,18 +19,103 @@
   	  <label>途经城市数量</label>
     </div>
     <div id = "via"></div>
-    <section class="col s6">
-      <label>出发时间</label>
-      <%= date_field(:schedule, :depart_date, class: 'datepicker') %>
-    </section>
-    <section class="col s6">
-      <label>返回时间</label>
-      <%= date_field(:schedule, :final_date, class: 'datepicker') %>
-    </section>
-    
+    <div>
+      <section class="col s6">
+        <label>出发时间</label>
+        <%= date_field(:schedule, :depart_date, class: 'datepicker') %>
+      </section>
+      <section class="col s6">
+        <label>返回时间</label>
+        <%= date_field(:schedule, :final_date, class: 'datepicker') %>
+      </section>
+    </div>
+
+
+    <section class="col s12"><h5>航班定制选项</h3></section>
+    <div>
+      <section class="col s12"><p style="height: 5px"></p></section>
+      <section class="col s6">
+        <%= check_box_tag(:isstop, 1) %>
+        <%= label_tag(:isstop, "是否允许经停") %>
+      </section>
+      <section class="col s6">
+        <%= check_box_tag(:flight_day, 1) %>
+        <%= label_tag(:flight_day, "是否允许红眼航班") %>
+      </section>
+    </div>
+    <div>
+      <section class="col s12">
+        <p style="height: 5px"></p>
+        <label> 可接受的最低准点率</label>
+        <p class="range-field" style="height: 30px">
+          <%= range_field(:schedule, :ontime_rate, in: 1..100) %>
+        </p>
+      </section>
+    </div>
+    <div>
+      <div class="input-field col s12">
+        <%= f.select(:seat_type, ['经济舱', '商务舱', '头等舱']) %>
+        <label>需要的舱位类型</label>
+      </div>
+    </div>
+    <div>
+      <section class="col s6">
+        <label for="schedule_earliest_dept_time">最早出发时间</label>
+        <%= time_field(:schedule, :earliest_dept_time) %>
+      </section>
+      <section class="col s6">
+        <label for="schedule_latest_arv_time">最晚到达时间</label>
+        <%= time_field(:schedule, :latest_arv_time) %>
+      </section>
+    </div>
+
+    <section class="col s12"><h5>酒店定制选项</h3></section>
+    <section class="col s12"><p style="height: 10px"></p></section>
+    <div>
+      <div class="input-field col s6">
+        <%= f.select(:hotel_star, (1..5).to_a) %>
+        <label>酒店最低星级要求</label>
+      </div>
+      <div class="input-field col s6">
+        <%= f.select(:hotel_type, ['高档型', '豪华型', '经济型']) %>
+        <label>酒店类型</label>
+      </div>
+    </div>
+    <div>
+      <div class="input-field col s6">
+        <%= f.select(:hotel_score, Array.new(11) { |e| e = Float(e) / 2 }) %>
+        <label>酒店最低评分</label>
+      </div>
+      <div class="input-field col s6">
+        <%= f.select(:user_recommend, Array.new(11) { |e| e = Float(e) / 10 }) %>
+        <label>好评率</label>
+      </div>
+    </div>
+    <div>
+      <div class="input-field col s12">
+        <%= f.select(:user_number, Array.new(31) { |e| e = e * 10 }) %>
+        <label>最少评论人数</label>
+      </div>
+    </div>
+    <div>
+      <section class="col s6">
+        <label> 可接受的最低价格</label>
+        <p class="range-field" style="height: 40px">
+          <%= range_field(:schedule, :lowest_price, in: 1..1500) %>
+        </p>
+      </section>
+      <section class="col s6">
+        <label> 可接受的最高价格</label>
+        <p class="range-field" style="height: 40px">
+          <%= range_field(:schedule, :highest_price, in: 1..1500) %>
+        </p>
+      </section>
+    </div>
     <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+
   <% end %>
 </div>
+
 
 
 
