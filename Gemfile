@@ -20,6 +20,10 @@ gem 'letter_avatar', '~>0.3.6'
 gem 'chinese_pinyin'
 gem 'materialize-sass'
 
+#Rabbit MQ
+gem 'bunny'
+gem 'json'
+
 group :development, :test do
   gem 'listen', '~>3.1.5'
   gem 'sqlite3', '~>1.3.13'

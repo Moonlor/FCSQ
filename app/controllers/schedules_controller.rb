@@ -1,3 +1,4 @@
+
 class SchedulesController < ApplicationController
   before_action :signed_in_user , only: [:index, :create, :destroy]
   before_action :correct_user,   only: :destroy
@@ -19,8 +20,27 @@ class SchedulesController < ApplicationController
           @via_city.save
         end
       end
-  	  pp params
-  	  redirect_to schedules_path
+
+      s = Schedule.find_by(id: @schedule.id)
+      cities = s.via_city_names
+      a = []
+      for each in cities
+        a.append each
+      end
+      j = JSON.parse(s.to_json)
+      j['cities'] = a
+      j_ok = j.to_json
+
+      connection =  Bunny.new(host: '182.254.138.108', user: 'woshinibaba', pass: 'nishiwoerzi')
+      connection.start
+      channel = connection.create_channel
+
+      queue = channel.queue('query_for_schedule')
+      channel.default_exchange.publish(j_ok, routing_key: queue.name)
+      connection.close
+
+      redirect_to schedules_path
+
   	else
       @feed_items = current_user.feed.paginate(page: params[:page])
       @micropost = current_user.microposts.build
