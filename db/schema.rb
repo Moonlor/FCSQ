@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326122707) do
+ActiveRecord::Schema.define(version: 20180328172013) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180326122707) do
     t.integer "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "stay_days", default: 2
   end
 
 end

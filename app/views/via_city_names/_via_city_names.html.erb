@@ -1,6 +1,11 @@
 <% (1..@city_amount.to_i).to_a.each do |i| %>
   <div class="input-field col s12 ajax_form_for_city_names" >
-    <%= select_tag('via_city_name[names][]', options_for_select(cities)) %>
-    <label>途经城市<%= i %></label>
+  		<div class="col s6">
+        	<%= select_tag('via_city_name[names][]', options_for_select(cities)) %>
+    		<label>途经城市<%= i %>      |       停留天数</label>
+    	</div>	
+    	<div class="col s6">
+        	<%= select_tag('via_city_name[stay_days][]', options_for_select((1..5).to_a)) %>
+    	</div>
   </div>
 <% end %>
