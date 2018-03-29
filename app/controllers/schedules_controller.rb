@@ -7,10 +7,10 @@ class SchedulesController < ApplicationController
   	@schedule = current_user.schedules.build(schedule_params)
   	@schedule.user_id = current_user.id
   	@schedule.status = 0
-    @schedule.isstop = params[:isstop]
-    @schedule.flight_day = params[:flight_day]
+    @schedule.isstop = (params[:isstop].nil?) ? '0':params[:isstop]
+    @schedule.flight_day = (params[:flight_day].nil?) ? '0':params[:flight_day]
     if @schedule.save
-      flash[:success] = "Well done, Next step!"
+      flash[:success] = "[ok]Well done, schedule being calculating!"
       if params.include?(:via_city_name)
         params[:via_city_name][:names].each do |name|
           @via_city = @schedule.via_city_names.build
@@ -20,6 +20,10 @@ class SchedulesController < ApplicationController
           @via_city.save
         end
       end
+
+      pp '======================='
+      pp params
+      pp '======================='
 
       s = Schedule.find_by(id: @schedule.id)
       cities = s.via_city_names

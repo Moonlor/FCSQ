@@ -54,7 +54,7 @@
     </div>
     <div>
       <div class="input-field col s12">
-        <%= f.select(:seat_type, ['经济舱', '商务舱', '头等舱']) %>
+        <%= f.select(:seat_type, ['经济舱', '商务舱', '头等舱', '无要求']) %>
         <label>需要的舱位类型</label>
       </div>
     </div>
@@ -73,11 +73,11 @@
     <section class="col s12"><p style="height: 10px"></p></section>
     <div>
       <div class="input-field col s6">
-        <%= f.select(:hotel_star, (1..5).to_a) %>
+        <%= f.select(:hotel_star, (1..5).to_a.append('无要求')) %>
         <label>酒店最低星级要求</label>
       </div>
       <div class="input-field col s6">
-        <%= f.select(:hotel_type, ['高档型', '豪华型', '经济型']) %>
+        <%= f.select(:hotel_type, ['高档型', '豪华型', '经济型', '无要求']) %>
         <label>酒店类型</label>
       </div>
     </div>
