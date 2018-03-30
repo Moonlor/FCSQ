@@ -13,11 +13,12 @@ class SchedulesController < ApplicationController
     if @schedule.save
       flash[:success] = "[ok]Well done, schedule being calculating!"
       if params.include?(:via_city_name)
-        params[:via_city_name][:names].each do |name|
+        for i in 0..params[:via_city_name][:names].size
           @via_city = @schedule.via_city_names.build
           @via_city.user_id = current_user.id
-          @via_city.city_name = name
+          @via_city.city_name = params[:via_city_name][:names][i]
           @via_city.schedule_id = @schedule.id
+          @via_city.stay_days = params[:via_city_name][:stay_days][i]
           @via_city.save
         end
       end
@@ -65,6 +66,29 @@ class SchedulesController < ApplicationController
   def update
     pp '---------------------查询订单是否完成----------------------'
     @schedule = Schedule.find_by(id: params[:id])
+
+    connection =  Bunny.new(host: '182.254.138.108', user: 'woshinibaba', pass: 'nishiwoerzi')
+    connection.start
+    channel = connection.create_channel
+    
+
+    queue = channel.queue('result_for_schedule')
+    delivery_info, metadata, payload = queue.pop
+
+    if !payload.nil?
+      r = JSON.parse(payload)
+      @finished_schedule = Schedule.find_by(id: r['schedule_id'])
+      if !@finished_schedule.nil?
+        @finished_schedule.result = r
+        @finished_schedule.status = 1
+        @finished_schedule.save
+      end
+    end
+    @schedule = Schedule.find_by(id: params[:id])
+
+    pp '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    pp @schedule
+
     respond_to do |format|
       format.js
     end

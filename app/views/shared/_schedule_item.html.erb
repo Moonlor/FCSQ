@@ -12,18 +12,13 @@
     </span>
     <div class="divider"></div>
   </span>
-  <span>
-    Via city names:
-    <ul>
-      <% schedule_item.via_city_names.each do |city| %>
-        <li>
-          <%= city.city_name %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="divider"></div>
+  <span id="<%= schedule_item.id %>_result_span">
+    
   </span>
+  <div class="divider"></div>
   <span>
-    <%= schedule_item.status_in_words %>
+    <p id = "<%= schedule_item.id %>_result"><%= schedule_item.status_in_words %></p>
   </span>
   <div class="divider"></div>
   <span>

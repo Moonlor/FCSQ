@@ -42,7 +42,13 @@
     });
 
     if ($('#query_for_schedule_status_flag').length > 0){
-      setInterval(function(){
+      var ajax_query = setInterval(function(){
+
+        if ($('.finished_flag').length == $('#query_for_schedule_status_flag').length){
+          clearInterval(ajax_query);
+          return
+        };
+
         $('.0').each(function(){ 
           $.ajax({
             url: "/schedules/" + $(this).val(),
