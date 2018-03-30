@@ -28,6 +28,7 @@
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
+
     $('#schedule_via_city_number').change(function(){
       var val = this.value;
       $(".ajax_form_for_city_names").remove();
@@ -39,6 +40,21 @@
       	dataType:"script"
       })
     });
+
+    if ($('#query_for_schedule_status_flag').length > 0){
+      setInterval(function(){
+        $('.0').each(function(){ 
+          $.ajax({
+            url: "/schedules/" + $(this).val(),
+            data: {
+              id: $(this).val()
+            },
+            type: 'PATCH',
+            dataType:"script"
+          })
+        });
+      }, 9000);
+    };
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

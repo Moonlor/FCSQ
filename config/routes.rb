@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions,      only: [:new, :create, :destroy]
   resources :microposts,    only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :schedules,     only: [:create, :destroy, :index]
+  resources :schedules,     only: [:create, :destroy, :index, :update]
   resources :via_city_names,only: :new
 
   root to: 'static_pages#home'

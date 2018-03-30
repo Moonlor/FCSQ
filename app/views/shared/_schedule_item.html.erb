@@ -1,6 +1,8 @@
 <div class="divider"></div>
+<div id="query_for_schedule_status_flag"></div>
 <div class="card-panel cyan lighten-5">
 <li id="<%= schedule_item.id %>">
+  <input class="<%= schedule_item.status %>" type="hidden" value= <%= schedule_item.id %> />
   <span>
     <span>
       Depart date | <%= schedule_item.depart_date %>
