@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330020555) do
+ActiveRecord::Schema.define(version: 20180330171230) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20180330020555) do
     t.string "flight_day", default: "0"
     t.float "ontime_rate", default: 55.0
     t.string "seat_type", default: "经济舱"
-    t.time "earliest_dept_time", default: "2000-01-01 00:00:01"
-    t.time "latest_arv_time", default: "2000-01-01 23:59:59"
     t.integer "hotel_star", default: 3
     t.string "hotel_type", default: "经济型"
     t.integer "lowest_price", default: 70
@@ -56,6 +54,10 @@ ActiveRecord::Schema.define(version: 20180330020555) do
     t.float "user_recommend", default: 0.9
     t.integer "user_number", default: 20
     t.string "result", default: " "
+    t.string "earliest_dept_hour", default: "0"
+    t.string "latest_arv_hour", default: "23"
+    t.string "earliest_dept_minute", default: "0"
+    t.string "latest_arv_hourminute", default: "59"
     t.index ["user_id", "created_at"], name: "index_schedules_on_user_id_and_created_at"
   end
 

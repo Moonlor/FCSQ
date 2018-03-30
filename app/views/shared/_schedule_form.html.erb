@@ -19,6 +19,7 @@
   	  <label>途经城市数量</label>
     </div>
     <div id = "via"></div>
+
     <div>
       <section class="col s6">
         <label>出发时间</label>
@@ -59,15 +60,26 @@
       </div>
     </div>
     <div>
-      <section class="col s6">
-        <label for="schedule_earliest_dept_time">最早出发时间</label>
-        <%= time_field(:schedule, :earliest_dept_time) %>
-      </section>
-      <section class="col s6">
-        <label for="schedule_latest_arv_time">最晚到达时间</label>
-        <%= time_field(:schedule, :latest_arv_time) %>
-      </section>
+      <div class="input-field col s6">
+        <%= f.select(:earliest_dept_hour, (0..23).to_a) %>
+        <label>最早出发时间(时:分)</label>
+      </div>  
+      <div class="input-field col s6">
+        <%= f.select(:earliest_dept_minute, (0..59).to_a) %>
+      </div>
     </div>
+    
+    <div>
+      <div class="input-field col s6">
+        <%= f.select(:latest_arv_hour, (0..23).to_a) %>
+        <label>最晚到达时间(时:分)</label>
+      </div>  
+      <div class="input-field col s6">
+        <%= f.select(:latest_arv_hourminute, (0..59).to_a) %>
+      </div>
+    </div>
+    
+
 
     <section class="col s12"><h5>酒店定制选项</h3></section>
     <section class="col s12"><p style="height: 10px"></p></section>
