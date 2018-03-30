@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330171230) do
+ActiveRecord::Schema.define(version: 20180330175816) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180330171230) do
     t.string "earliest_dept_hour", default: "0"
     t.string "latest_arv_hour", default: "23"
     t.string "earliest_dept_minute", default: "0"
-    t.string "latest_arv_hourminute", default: "59"
+    t.string "latest_arv_minute", default: "59"
     t.index ["user_id", "created_at"], name: "index_schedules_on_user_id_and_created_at"
   end
 

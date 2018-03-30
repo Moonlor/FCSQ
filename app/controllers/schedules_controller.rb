@@ -102,7 +102,7 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:depart_city, :final_city, :via_city_number, 
                                :password_confirmation, :depart_date, :final_date,
-                               :isstop, :flight_day, :ontime_rate, :seat_type, :latest_arv_hour, :latest_arv_hourminute,
+                               :isstop, :flight_day, :ontime_rate, :seat_type, :latest_arv_hour, :latest_arv_minute,
                                :earliest_dept_hour, :earliest_dept_minute,
                                :hotel_type,:hotel_star, :lowest_price, :highest_price, :hotel_score, :user_recommend, :user_number
                                )
