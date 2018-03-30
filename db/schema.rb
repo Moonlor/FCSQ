@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328172013) do
+ActiveRecord::Schema.define(version: 20180330020555) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180328172013) do
     t.float "hotel_score", default: 4.2
     t.float "user_recommend", default: 0.9
     t.integer "user_number", default: 20
+    t.string "result", default: " "
     t.index ["user_id", "created_at"], name: "index_schedules_on_user_id_and_created_at"
   end
 

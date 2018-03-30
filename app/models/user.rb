@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def status_count(status_code)
-    Schedule.where("status = ?", status_code).count
+    self.schedules.where("status = ?", status_code).count
   end
 
   def User.new_remember_token
