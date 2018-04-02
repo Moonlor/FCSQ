@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
     if !payload.nil?
       @finished_schedule = Schedule.find_by(id: r['schedule_id'])
       if !@finished_schedule.nil?
-        @finished_schedule.result = payl
+        @finished_schedule.result = payload
         @finished_schedule.status = 1
         @finished_schedule.save
       end
