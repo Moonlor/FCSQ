@@ -74,12 +74,12 @@ class SchedulesController < ApplicationController
 
     queue = channel.queue('result_for_schedule')
     delivery_info, metadata, payload = queue.pop
+    connection.close
 
     if !payload.nil?
-      r = JSON.parse(payload)
       @finished_schedule = Schedule.find_by(id: r['schedule_id'])
       if !@finished_schedule.nil?
-        @finished_schedule.result = r
+        @finished_schedule.result = payl
         @finished_schedule.status = 1
         @finished_schedule.save
       end

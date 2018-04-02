@@ -20,7 +20,8 @@
     <% if schedule_item.status == 1 %>
       <%= schedule_item.result %>
     <% end %>
-  </div>  
+  </div>
+  <%= render partial: 'shared/flight_card', object: schedule_item %>
   <div class="divider"></div>
   <span>
     <p id = "<%= schedule_item.id %>_result"><%= schedule_item.status_in_words %></p>
