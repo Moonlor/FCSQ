@@ -41,6 +41,7 @@
       })
     });
 
+
     if ($('#query_for_schedule_status_flag').length > 0){
       var ajax_query = setInterval(function(){
 
@@ -59,7 +60,7 @@
             dataType:"script"
           })
         });
-      }, 9000);
+      }, 3000);
     };
 
   }); // end of document ready
