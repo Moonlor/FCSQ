@@ -60,7 +60,7 @@
             dataType:"script"
           })
         });
-      }, 3000);
+      }, 4000);
     };
 
   }); // end of document ready

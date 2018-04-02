@@ -1,3 +1,16 @@
 // Place all the styles related to the Schedules controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*flight-card*/
+
+#flight-card .card-header .card-title { padding: 20px; }
+#flight-card .flight-card-title { margin: 0; font-weight: 300; }
+#flight-card .flight-card-date { font-size: 1.0rem; margin: 0; }
+#flight-card .flight-state { padding-bottom: 15px; }
+#flight-card .flight-state-two { border-left: 1px dashed #fafafa; }
+#flight-card .flight-state-one { border-right: 1px dashed #fafafa; }
+  
+#flight-card .card-content { background: rgba(0, 0, 0, 0.25); }
+/*task-card*/
+

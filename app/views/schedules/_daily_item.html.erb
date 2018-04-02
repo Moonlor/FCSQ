@@ -1,0 +1,17 @@
+date: 
+<% for each in daily_item['hotel'] %>
+  <%= each['come_date'] %>
+  <% break %>
+<% end %>
+
+
+flight on the day:
+<% for each in daily_item['flight'] %>
+  <%= render partial: 'shared/flight_card', object: each %>
+<% end %>
+
+hotel on the day:
+
+<% for each in daily_item['hotel'] %>
+  <%= each['hotel_name'] %>
+<% end %>

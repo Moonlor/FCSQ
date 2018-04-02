@@ -5,7 +5,14 @@ if ($('#query_for_schedule_status_flag').length > 0){
   }
   //计算完成，无任何错误
   if( <%= @schedule.status %> == 1) {
-    $("#<%= @schedule.id %>_result_span").after("<%= escape_javascript(render('schedules/result_feed')) %>");
-    $("#<%= @schedule.id %>_result").html("<p> Finished </p>"); 
+  	<% plan = 0 %>
+  	<% if @schedule.status == 1 %>
+  	  <% plan = JSON.parse @schedule.result %>
+      <% count = plan['result_num'] %>
+      <% min_cost = plan['min_cost'] %>
+    <% end %>
+
+    $("#<%= @schedule.id %>_result_span").after("<%= escape_javascript( render partial: 'schedules/result_feed', object: plan)  %>");
+    $("#<%= @schedule.id %>_result").html("<p> Finished </p><div class='finished_flag'></div>"); 
   }
 };

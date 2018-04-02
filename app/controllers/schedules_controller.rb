@@ -77,6 +77,7 @@ class SchedulesController < ApplicationController
     connection.close
 
     if !payload.nil?
+      r = JSON.parse(payload)
       @finished_schedule = Schedule.find_by(id: r['schedule_id'])
       if !@finished_schedule.nil?
         @finished_schedule.result = payload
@@ -85,9 +86,6 @@ class SchedulesController < ApplicationController
       end
     end
     @schedule = Schedule.find_by(id: params[:id])
-
-    pp '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-    pp @schedule
 
     respond_to do |format|
       format.js

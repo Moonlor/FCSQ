@@ -1,6 +1,7 @@
 <div class="divider"></div>
 <div id="query_for_schedule_status_flag"></div>
 <div class="card-panel cyan lighten-5">
+
 <li id="<%= schedule_item.id %>">
   <input class="<%= schedule_item.status %>" type="hidden" value= <%= schedule_item.id %> />
   <span>
@@ -13,15 +14,17 @@
     <div class="divider"></div>
   </span>
   <div class="divider"></div>
-  <span id="<%= schedule_item.id %>_result_span">
-    
-  </span>
+  <span id="<%= schedule_item.id %>_result_span"></span>
   <div>
     <% if schedule_item.status == 1 %>
-      <%= schedule_item.result %>
+
+      <% plan = JSON.parse schedule_item.result %>
+      <% count = plan['result_num'] %>
+      <% min_cost = plan['min_cost'] %>
+
+      <%= render partial: 'schedules/result_feed', object: plan %>
     <% end %>
   </div>
-  <%= render partial: 'shared/flight_card', object: schedule_item %>
   <div class="divider"></div>
   <span>
     <p id = "<%= schedule_item.id %>_result"><%= schedule_item.status_in_words %></p>
@@ -42,3 +45,4 @@
   <% end %>
 </li>
 </div>
+
