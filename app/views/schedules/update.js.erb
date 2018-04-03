@@ -1,7 +1,7 @@
 if ($('#query_for_schedule_status_flag').length > 0){
   //计算未完成
   if( <%= @schedule.status %> == 0){
-  	$("#<%= @schedule.id %>_result").html("<p> 旅行计划 id : <%= @schedule.id %> 还未计算完成 </p>"); 
+  	$("#<%= @schedule.id %>_result").html("<p> Travel schedule id : <%= @schedule.id %> | Not finshed yet </p>"); 
   }
   //计算完成，无任何错误
   if( <%= @schedule.status %> == 1) {

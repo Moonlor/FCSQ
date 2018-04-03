@@ -1,0 +1,36 @@
+<div id="hotel-card" class="card">
+  <div class="card-header light-blue accent-1">
+    <div class="card-title">
+      <h5 class="hotel-card-title center-align"><%= hotel_card['hotel_name'] %></h5>
+    </div>
+  </div>
+  <div class="card-content-bg white-text">
+    <div class="card-content">
+
+      <div class="row hotel-state-wrapper hotel-state-bottom">
+        <div class="col s12 m12 l12 center-align ">
+          <div class="hotel-state">
+            <h4 class="margin"><%= hotel_card['hotel_price'] %>¥</h4>
+            <p class="ultra-small"><%= hotel_card['hotel_address'] %></p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="row hotel-state-wrapper">
+        <div class="col s12 m12 l12 center-align ">
+          <div class="hotel-state">
+            <h5 class="margin"><%= hotel_card['user_number'] %> Reviews : <%= hotel_card['hotel_comment'] %></h5>
+            <p class="ultra-small"><%= hotel_card['dept_airport'] %></p>
+          </div>
+          <div class="hotel-info">
+            <p class="small">
+              score: <%= hotel_card['hotel_score'] %>
+              <br>
+              <%= hotel_card['user_recommend'] %>% of visitors recommended</p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+  </div>

@@ -11,7 +11,7 @@ class SchedulesController < ApplicationController
     @schedule.isstop = (params[:isstop].nil?) ? '0':params[:isstop]
     @schedule.flight_day = (params[:flight_day].nil?) ? '0':params[:flight_day]
     if @schedule.save
-      flash[:success] = "[ok]Well done, schedule being calculating!"
+      flash[:success] = "Well done, schedule being calculating!"
       if params.include?(:via_city_name)
         for i in 0..params[:via_city_name][:names].size
           @via_city = @schedule.via_city_names.build

@@ -4,44 +4,34 @@
 
 <li id="<%= schedule_item.id %>">
   <input class="<%= schedule_item.status %>" type="hidden" value= <%= schedule_item.id %> />
-  <span>
-    <span>
-      Depart date | <%= schedule_item.depart_date %>
-    </span>
-    <span>
-    Depart city | <%= schedule_item.depart_city %>
-    </span>
-    <div class="divider"></div>
-  </span>
-  <div class="divider"></div>
   <span id="<%= schedule_item.id %>_result_span"></span>
+  
+
   <div>
     <% if schedule_item.status == 1 %>
 
       <% plan = JSON.parse schedule_item.result %>
       <% count = plan['result_num'] %>
       <% min_cost = plan['min_cost'] %>
+      <span>
+        <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
+      </span>
+      <span>
+        <h5 class="center-align" >Lowest cost: <%= min_cost %>¥</h5>
+      </span>
 
       <%= render partial: 'schedules/result_feed', object: plan %>
     <% end %>
   </div>
   <div class="divider"></div>
   <span>
-    <p id = "<%= schedule_item.id %>_result"><%= schedule_item.status_in_words %></p>
+    <p id = "<%= schedule_item.id %>_result">Status: ---- <%= schedule_item.status_in_words %> ---- </p>
   </span>
-  <div class="divider"></div>
-  <span>
-    Return date | <%= schedule_item.final_date %>
-  </span>
-  <span>
-    Return city | <%= schedule_item.final_city %>
-  </span>
-  <br>
   <span class="timestamp">
-    Calculating started <%= time_ago_in_words(schedule_item.created_at) %> ago.
+    <p>Calculating started <%= time_ago_in_words(schedule_item.created_at) %> ago.</p>
   </span>
   <% if current_user?(schedule_item.user) %>
-    <%= link_to "delete", schedule_item, method: :delete, data: { confirm: "You sure?" }%>
+    <%= button_to "delete", schedule_item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-large btn-primary"%>
   <% end %>
 </li>
 </div>

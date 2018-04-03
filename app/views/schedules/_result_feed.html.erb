@@ -1,8 +1,6 @@
 <br>
 <% plan = result_feed %>
-<br>
 <% count = plan['plan1'].size - 1 %>
-<br>
 <% for i in (0..count).to_a %>
   <%= render partial: 'schedules/daily_item', object: plan['plan1'][i] %>
 <% end %>
