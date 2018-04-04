@@ -1,3 +1,4 @@
+<%= render partial: 'shared/schedule_status' %>
 <% if @schedule_items.any? %>
   <ul class="schedules">
     <%= render partial: 'shared/schedule_item', collection: @schedule_items %>

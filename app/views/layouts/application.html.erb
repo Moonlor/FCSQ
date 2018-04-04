@@ -14,9 +14,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
+    <div class="container" style="padding-top: 30px">
         <% flash.each do |key, value| %>
-      <div style="padding-top: 30px" class="alert alert-<%= key %>" ><%= value %>
+      <div class="alert alert-<%= key %>" ><%= value %>
         <script type="text/javascript">
           window.onload = function () {
             Materialize.toast(<%= raw alert_message(value) %>, 4000)

@@ -11,7 +11,7 @@ class SchedulesController < ApplicationController
     @schedule.isstop = (params[:isstop].nil?) ? '0':params[:isstop]
     @schedule.flight_day = (params[:flight_day].nil?) ? '0':params[:flight_day]
     if @schedule.save
-      flash[:success] = "[ok]Well done, schedule being calculating!"
+      flash[:success] = "Well done, schedule being calculating!"
       if params.include?(:via_city_name)
         for i in 0..params[:via_city_name][:names].size
           @via_city = @schedule.via_city_names.build
@@ -74,20 +74,18 @@ class SchedulesController < ApplicationController
 
     queue = channel.queue('result_for_schedule')
     delivery_info, metadata, payload = queue.pop
+    connection.close
 
     if !payload.nil?
       r = JSON.parse(payload)
       @finished_schedule = Schedule.find_by(id: r['schedule_id'])
       if !@finished_schedule.nil?
-        @finished_schedule.result = r
+        @finished_schedule.result = payload
         @finished_schedule.status = 1
         @finished_schedule.save
       end
     end
     @schedule = Schedule.find_by(id: params[:id])
-
-    pp '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-    pp @schedule
 
     respond_to do |format|
       format.js

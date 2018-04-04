@@ -1,2 +1,7 @@
-<%= @schedule.result %>
-<div class="finished_flag"></div>
+<br>
+<% plan = result_feed %>
+<% count = plan['plan1'].size - 1 %>
+<% for i in (0..count).to_a %>
+  <%= render partial: 'schedules/daily_item', object: plan['plan1'][i] %>
+<% end %>
+<br>
