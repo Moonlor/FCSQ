@@ -12,15 +12,26 @@
 
       <% plan = JSON.parse schedule_item.result %>
       <% count = plan['result_num'] %>
-      <% min_cost = plan['min_cost'] %>
-      <span>
-        <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
-      </span>
-      <span>
-        <h5 class="center-align" >Lowest cost: <%= min_cost %>¥</h5>
-      </span>
 
-      <%= render partial: 'schedules/result_feed', object: plan %>
+      <% if count != 0 %>
+        <% min_cost = plan['min_cost'] %>
+        <span>
+          <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
+        </span>
+        <span>
+          <h5 class="center-align" >Lowest cost: <%= min_cost %>¥</h5>
+        </span>
+
+        <%= render partial: 'schedules/result_feed', object: plan %>
+      <% else %>
+        <span>
+          <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
+        </span>
+        <span>
+          <h5 class="center-align" >[!] Error: <%= plan['error'] %></h5>
+        </span>
+      <% end %>
+
     <% end %>
   </div>
   <div class="divider"></div>
