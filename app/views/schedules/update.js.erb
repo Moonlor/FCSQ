@@ -1,7 +1,10 @@
 if ($('#query_for_schedule_status_flag').length > 0){
   //计算未完成
+  $('#status').replaceWith("<%= escape_javascript( render partial: 'shared/schedule_status') %>"); 
+  $('#<%= @schedule.id %>_timestamp').html("<p id = '<%= @schedule.id %>_timestamp'>Calculating started <%= time_ago_in_words(@schedule.created_at) %> ago.</p>")
   if( <%= @schedule.status %> == 0){
-  	$("#<%= @schedule.id %>_result").html("<p> Travel schedule id : <%= @schedule.id %> | Not finshed yet </p>"); 
+  	$("#<%= @schedule.id %>_result").html("<p id = '<%= @schedule.id %>_result'> Travel schedule id : <%= @schedule.id %> | Not finshed yet </p>");
+    // $("#<%= @schedule.id %>_timestamp").html("<p id = '<%= @schedule.id %>_timestamp'>Calculating started <%= time_ago_in_words(@schedule.created_at) %> ago.</p>");  
   }
   //计算完成，无任何错误
   if( <%= @schedule.status %> == 1) {
@@ -11,6 +14,7 @@ if ($('#query_for_schedule_status_flag').length > 0){
       <% count = plan['result_num'] %>
       <% if count != 0 %>
         <% min_cost = plan['min_cost'] %>
+        $("#<%= @schedule.id %>_title").html("<span><h5 class='center-align' >Schedule id: <%= @schedule.id %></h5></span><span><h5 class='center-align' >Lowest cost: <%= min_cost %>¥</h5></span>"); 
         $("#<%= @schedule.id %>_result_span").after("<%= escape_javascript( render partial: 'schedules/result_feed', object: plan)  %>");
         $("#<%= @schedule.id %>_result").html("<p> Finished </p><div class='finished_flag'></div>"); 
       <% else %>
