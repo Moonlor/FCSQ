@@ -4,9 +4,9 @@
 
 <li id="<%= schedule_item.id %>">
   <input class="<%= schedule_item.status %>" type="hidden" value= <%= schedule_item.id %> />
+  <div id = "<%= schedule_item.id %>_title"></div>
   <span id="<%= schedule_item.id %>_result_span"></span>
   
-
   <div>
     <% if schedule_item.status == 1 %>
 
@@ -39,7 +39,7 @@
     <p id = "<%= schedule_item.id %>_result">Status: ---- <%= schedule_item.status_in_words %> ---- </p>
   </span>
   <span class="timestamp">
-    <p>Calculating started <%= time_ago_in_words(schedule_item.created_at) %> ago.</p>
+    <p id = "<%= schedule_item.id %>_timestamp">Calculating started <%= time_ago_in_words(schedule_item.created_at) %> ago.</p>
   </span>
   <% if current_user?(schedule_item.user) %>
     <%= button_to "delete", schedule_item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-large btn-primary"%>
