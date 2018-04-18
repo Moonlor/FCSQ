@@ -3,7 +3,7 @@ include LetterAvatar::AvatarHelper
 module ApplicationHelper
 
   def full_title(page_title)
-  	base_title = "Min T"
+  	base_title = "FCSQ"
   	if page_title.empty?
   	  base_title
   	else
