@@ -2,35 +2,61 @@
 
 <div class="divider"></div>
 
-<h5 class="center-align">
-<% for each in daily_item['hotel'] %>
-  <%= each['come_date'] %>
-  <% break %>
-<% end %>
-</h5>
+<ul class="collapsible cyan lighten-3" data-collapsible="expandable">
+  <li>
+    <h5 class="collapsible-header cyan lighten-3" style="text-align:center">
+    <% for each in daily_item['hotel'] %>
+      <%= each['come_date'] %>
+      <% break %>
+    <% end %>
+    </h5>
 
-<% if daily_item['flight'].size != 0%>
-  <h5 class="center-align">Recommended flight: </h5>
-<% end %>
+    <div class="collapsible-body">
 
-<ul id="flight_feed_<%= r_id %>" class='flight_feed'>
-  <% for each in daily_item['flight'] %>
-    <li style="opacity: 0" ><%= render partial: 'shared/flight_card', object: each %></li>
-  <% end %>
+      <ul class="collapsible cyan lighten-1" data-collapsible="expandable">
+        <li>
+          <% if daily_item['flight'].size != 0%>
+            <h5 class="collapsible-header cyan lighten-1" style="text-align:center">Recommended flight: </h5>
+          <% end %>
+          <div class="collapsible-body">
+            <div class="flight_feed">
+              <ul id="flight_feed_<%= r_id %>">
+                <% for each in daily_item['flight'] %>
+                  <li style="opacity: 0">
+                    <%= render partial: 'shared/flight_card', object: each %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+      <ul class="collapsible cyan lighten-1" data-collapsible="expandable">
+        <li>
+          <% if daily_item['hotel'].size != 0%>
+            <h5 class="collapsible-header cyan lighten-1" style="text-align:center">Recommended hotel: </h5>
+          <% end %>
+          <div class="collapsible-body">
+            <div class="hotel_feed">
+              <ul id="hotel_feed_<%= r_id %>">
+                <% for each in daily_item['hotel'] %>
+                  <li style="opacity: 0" >
+                  <%= render partial: 'shared/hotel_card', object: each %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </li>
 </ul>
-
-<% if daily_item['hotel'].size != 0%>
-  <h5 class="center-align">Recommended hotel: </h5>
-<% end %>
-<ul id="hotel_feed_<%= r_id %>" class='hotel_feed'>
-  <% for each in daily_item['hotel'] %>
-    <li style="opacity: 0" ><%= render partial: 'shared/hotel_card', object: each %></li>
-  <% end %>
-</ul>
-
+        
 <script type="text/javascript">
-
-
 
 (function($){
   $(function(){
