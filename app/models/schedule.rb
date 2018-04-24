@@ -5,7 +5,6 @@ class Schedule < ApplicationRecord
   validates :via_city_number, :depart_date, :final_date, presence: true
 
   validate :check_date
-  private
   def check_date
     self.errors[:date] << "Depart_date must be earlier than final_date." if depart_date.present? && final_date.present? && depart_date > final_date
   end

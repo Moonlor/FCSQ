@@ -48,7 +48,7 @@
       <section class="col s12" style="overflow: visible">
         <p style="height: 5px"></p>
         <label> 可接受的最低准点率</label>
-        <span class="ontime_value"></span>
+        <span class="ontime_value">默认</span>
         <p class="range-field">
           <%= range_field(:schedule, :ontime_rate, in: 1..100) %>
         </p>
@@ -115,14 +115,14 @@
     <div>
       <section id="min" class="col s6" style="overflow: visible">
         <label> 可接受的最低价格</label>
-        <span class="min_price"></span>
+        <span class="min_price">默认</span>
         <p class="range-field">
           <%= range_field(:schedule, :lowest_price, in: 1..1500) %>
         </p>
       </section>
       <section id="max" class="col s6" style="overflow: visible">
         <label> 可接受的最高价格</label>
-        <span class="max_price"></span>
+        <span class="max_price">默认</span>
         <p class="range-field">
           <%= range_field(:schedule, :highest_price, in: 1..1500) %>
         </p>
