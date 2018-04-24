@@ -15,11 +15,6 @@ class Schedule < ApplicationRecord
     self.errors[:date] << "Depart_date must be later than today." if  depart_date.present? && depart_date < Time.now
   end
 
-  validate :check_city
-  def check_city
-    self.errors[:city] << "Via_city should be different." if  via_city_names.present? && via_city_names.names.length > via_city_names.names.uniq.length
-  end
-
   default_scope -> { order('created_at DESC') }
 
   def status_in_words
