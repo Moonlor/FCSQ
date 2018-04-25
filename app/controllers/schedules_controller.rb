@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     @schedule.flight_day = (params[:flight_day].nil?) ? '0':params[:flight_day]
 
     all_city = []
-    if params[:via_city_number]
+    if params[:via_city_number] != 0 and params.include?(:via_city_name)
       all_city = params[:via_city_name][:names]
     end
     all_city << params[:schedule][:depart_city]
@@ -20,8 +20,9 @@ class SchedulesController < ApplicationController
 
     if all_city.length > all_city.uniq.length
       flash[:error] = "Duplicate city name exists!"
+    end
 
-    elsif @schedule.save
+    if all_city.length <= all_city.uniq.length and @schedule.save
       flash[:success] = "Well done, schedule being calculating!"
       if params.include?(:via_city_name)
         for i in 0..params[:via_city_name][:names].size

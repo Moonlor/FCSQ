@@ -14,10 +14,15 @@
   	  <%= f.select(:final_city, cities) %>
       <label>到达城市</label>
     </div>
-    <div class="input-field col s12">
-  	  <%= f.select(:via_city_number, city_number) %>
-  	  <label>途经城市数量</label>
+    <div class="col s12">
+  	  <label>途经城市</label>
+	  <span id="count"><%= f.text_field(:via_city_number) %></span>
+	  <div class="buttons" style="float: right;">
+	    <a class="btn-floating btn-small waves-effect waves-light" id="add"><i class="material-icons">add</i></a>
+	    <a class="btn-floating btn-small waves-effect waves-light" id="remove"><i class="material-icons">delete</i></a>
+	  </div>
     </div>
+
     <div id = "via"></div>
 
     <div>
@@ -134,6 +139,11 @@
 </div>
 
 <script>
+  $(document).ready(function(){
+    $('span#count').hide();
+    $('input#schedule_via_city_number').val(0);
+  });
+  
   $('input#schedule_ontime_rate').mouseup(function(){
     var rate = $('section.col.s12').find('span.value').text();
     $('span.ontime_value').text(rate + '%');
@@ -145,6 +155,40 @@
   $('input#schedule_highest_price').mouseup(function(){
     var price = $('section#max.col.s6').find('span.value').text();
     $('span.max_price').text('￥' + price);
+  });
+
+  $("#add").click(function () {
+    var timestamp=new Date().getTime();
+    var count = $("#count").val() - (-1);
+    $.ajax({
+      type: "GET",
+      url: "/via_city_names/new",
+      data: {amount: count, time: timestamp},
+      dataType: 'json',
+      complete: function(response){
+        $('div.input-field.col.s12.ajax_form_for_city_names').remove();
+        eval(response.responseText);
+	$("#count").val(count);
+        $('input#schedule_via_city_number').val(count);
+      }
+    });
+  });
+
+  $("#remove").click(function () {
+    var timestamp=new Date().getTime();
+    var count = $("#count").val() - 1;
+    $.ajax({
+      type: "GET",
+      url: "/via_city_names/new",
+      data: {amount: count, time: timestamp},
+      dataType: 'json',
+      complete: function(response){
+        $('div.input-field.col.s12.ajax_form_for_city_names').remove();
+	eval(response.responseText);
+	$("#count").val(count);
+        $('input#schedule_via_city_number').val(count);
+      }
+    });
   });
 </script>
 
