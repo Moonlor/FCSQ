@@ -15,11 +15,9 @@ class SchedulesController < ApplicationController
     if params[:via_city_number] != 0 and params.include?(:via_city_name)
       all_city = params[:via_city_name][:names]
     end
-    all_city << params[:schedule][:depart_city]
-    all_city << params[:schedule][:final_city]
 
     if all_city.length > all_city.uniq.length
-      flash[:error] = "Duplicate city name exists!"
+      flash[:error] = "Duplicate via city name exists!"
     end
 
     if all_city.length <= all_city.uniq.length and @schedule.save
