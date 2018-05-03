@@ -1,10 +1,10 @@
 <li>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    发布于 <%= time_ago_in_words(micropost.created_at) %> 之前 
   </span>
   <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,data: { confirm: "You sure?" },title: micropost.content %>
+    <%= link_to "删除", micropost, method: :delete,data: { confirm: "该操作无法撤销，确认？" },title: micropost.content %>
   <% end %>
 </li>
 

@@ -16,19 +16,19 @@
       <% if count != 0 %>
         <% min_cost = plan['min_cost'] %>
         <span>
-          <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
+          <h5 class="center-align" >行程编号：<%= schedule_item.id %></h5>
         </span>
         <span>
-          <h5 class="center-align" >Lowest cost: ¥<%= min_cost %></h5>
+          <h5 class="center-align" >最低总价： ¥<%= min_cost %></h5>
         </span>
 
         <%= render partial: 'schedules/result_feed', object: plan %>
       <% else %>
         <span>
-          <h5 class="center-align" >Schedule id: <%= schedule_item.id %></h5>
+          <h5 class="center-align" >行程编号： <%= schedule_item.id %></h5>
         </span>
         <span>
-          <h5 class="center-align" >[!] Error: <%= plan['error'] %></h5>
+          <h5 class="center-align" >[!] 错误： <%= plan['error'] %></h5>
         </span>
       <% end %>
 
@@ -36,13 +36,13 @@
   </div>
   <div class="divider"></div>
   <span>
-    <p id = "<%= schedule_item.id %>_result">Status: ---- <%= schedule_item.status_in_words %> ---- </p>
+    <p id = "<%= schedule_item.id %>_result">当前状态： ---- <%= schedule_item.status_in_words %> ---- </p>
   </span>
   <span class="timestamp">
-    <p id = "<%= schedule_item.id %>_timestamp">Calculating started <%= time_ago_in_words(schedule_item.created_at) %> ago.</p>
+    <p id = "<%= schedule_item.id %>_timestamp">计算开始于 <%= time_ago_in_words(schedule_item.created_at) %> 之前</p>
   </span>
   <% if current_user?(schedule_item.user) %>
-    <%= button_to "delete", schedule_item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-large btn-primary"%>
+    <%= button_to "删除", schedule_item, method: :delete, data: { confirm: "该操作无法撤销，确认？" }, class: "btn btn-large btn-primary"%>
   <% end %>
 </li>
 </div>
