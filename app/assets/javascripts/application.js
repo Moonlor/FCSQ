@@ -70,7 +70,7 @@
     var pos = document.documentElement.scrollTop;
     var near_item = items[0];
   
-    for (let i = 0; i < items.length; i++){
+    for (var i=0; i<items.length; i++){
       if (items[i].offsetTop < pos + 50){
         near_item = items[i];
       }
