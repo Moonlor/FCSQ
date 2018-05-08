@@ -63,5 +63,26 @@
       }, 4000);
     };
   }); // end of document ready
+  
+  // schedule_feed
+  $("#roll_back").click(function() {
+    var items = $("li[id^=schedule_item_]");
+    var pos = document.documentElement.scrollTop;
+    var near_item = items[0];
+  
+    for (let i = 0; i < items.length; i++){
+      if (items[i].offsetTop < pos + 50){
+        near_item = items[i];
+      }
+    }
+
+    $("html, body").animate({
+        scrollTop: near_item.offsetTop - 50
+      }, 
+      {
+        duration: 300,easing: "swing"
+      });
+      return false;
+  });
 })(jQuery); // end of jQuery name space
 
