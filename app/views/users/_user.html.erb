@@ -6,7 +6,7 @@
       <%= link_to user.name, user %>
       <% if current_user.admin? && !current_user?(user) %>
       <br>
-      |<%= link_to 'delete', user, method: :delete, data: { confirm: "You sure?" } %>|
+      |<%= link_to '删除', user, method: :delete, data: { confirm: "该操作无法撤销，确认？" } %>|
       <% end %>
     </li>
   </div>

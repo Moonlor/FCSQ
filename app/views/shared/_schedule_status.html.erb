@@ -3,13 +3,13 @@
 
 <div class="stats">
   <section>
-  	<strong> <%= @user.schedules.count %> schedules: </strong>
+  	总计 <%= @user.schedules.count %> 个行程： 
   </section>
   <section>
-  	<%= @user.status_count(0)%> being calculating
+  	<%= @user.status_count(0)%> 正在计算中
   </section>
   <section>
-  	<%= @user.status_count(1)%> finished
+  	<%= @user.status_count(1)%> 已完成
   </section>
 
 </div>

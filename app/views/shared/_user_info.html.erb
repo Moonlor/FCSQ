@@ -13,9 +13,9 @@
   </h1>
 
   <span>
-    <%= link_to "view my profile", current_user %>
+    <%= link_to "进入个人中心", current_user %>
   </span>
   <span>
-    <%= pluralize(current_user.microposts.count, "micropost") %>
+    <%= pluralize(current_user.microposts.count, "个动态") %>
   </span>
 </div>
