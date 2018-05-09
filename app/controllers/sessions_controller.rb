@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
   	else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = '无效的用户名或密码'
       render 'new'
     end
 
