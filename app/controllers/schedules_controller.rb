@@ -17,11 +17,11 @@ class SchedulesController < ApplicationController
     end
 
     if all_city.length > all_city.uniq.length
-      flash[:error] = "Duplicate via city name exists!"
+      flash.now[:error] = "存在重复的途经城市！"
     end
 
     if all_city.length <= all_city.uniq.length and @schedule.save
-      flash[:success] = "Well done, schedule being calculating!"
+      flash[:success] = "创建成功，行程已开始计算"
       if params.include?(:via_city_name)
         for i in 0..params[:via_city_name][:names].size
           @via_city = @schedule.via_city_names.build

@@ -1,7 +1,7 @@
 <% if object.success.any? %>
   <div id = "success_explanation">
     <div class="card-panel green">
-      <span class="white-text">The form contains <%= pluralize(object.success.count, "success") %>.
+      <span class="white-text">表单包含 <%= object.success.count %>个成功。
         <% object.success.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
