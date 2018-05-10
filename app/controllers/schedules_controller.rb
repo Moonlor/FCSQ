@@ -12,15 +12,30 @@ class SchedulesController < ApplicationController
     @schedule.flight_day = (params[:flight_day].nil?) ? '0':params[:flight_day]
 
     all_city = []
+    city_check = true
+
     if params[:via_city_number] != 0 and params.include?(:via_city_name)
       all_city = params[:via_city_name][:names]
     end
 
+    pp all_city, params[:schedule][:depart_city], params[:schedule][:final_city]
+
+    if not params[:schedule][:depart_city].nil? and all_city.include?(params[:schedule][:depart_city])
+      flash.now[:error] = "途经城市中不能包含出发城市！"
+      city_check = false
+    end 
+
+    if not params[:schedule][:final_city].nil? and all_city.include?(params[:schedule][:final_city])
+      flash.now[:error] = "途经城市中不能包含到达城市！"
+      city_check = false
+    end 
+
     if all_city.length > all_city.uniq.length
       flash.now[:error] = "存在重复的途经城市！"
+      city_check = false
     end
 
-    if all_city.length <= all_city.uniq.length and @schedule.save
+    if city_check and @schedule.save
       flash[:success] = "创建成功，行程已开始计算"
       if params.include?(:via_city_name)
         for i in 0..params[:via_city_name][:names].size
