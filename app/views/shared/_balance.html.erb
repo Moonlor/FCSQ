@@ -1,0 +1,43 @@
+<div class="collection">
+    <% @user ||= current_user %>
+    <a href="#top-up" class="collection-item"><span class="new badge green" data-badge-caption=" 人民币 ">1</span>账户余额</a>
+    <a href="#top-up" class="collection-item"><span class="new badge red" data-badge-caption=" 剩余 ">4</span>可用查询次数</a>
+</div>
+
+
+  <div id="top-up" class="modal">
+    <div class="modal-content">
+      <h4 >账户充值</h4>
+
+      <div class="row">
+
+        <div class="col s4 z-depth-1">
+          <div class="center promo_0">
+            <i class="material-icons">card_giftcard</i>
+            <p class="flow-text">¥5</p>
+            <p class="light center">充值5元 <%= link_to "Y", orders_path, method: :post %></p>
+          </div>
+        </div>
+
+        <div class="col s4 z-depth-1">
+          <div class="center promo_1 ">
+            <i class="material-icons">add_shopping_cart</i>
+            <p class="flow-text">¥10</p>
+            <p class="light center">充值10元</p>
+          </div>
+        </div>
+
+        <div class="col s4 z-depth-1">
+          <div class="center promo_2 ">
+            <i class="material-icons">payment</i>
+            <p class="flow-text">¥20</p>
+            <p class="light center">充值20元</p>
+          </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close btn btn-large btn-primary">关闭</a>
+    </div>
+  </div>
+  </div>

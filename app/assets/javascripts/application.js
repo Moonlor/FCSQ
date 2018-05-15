@@ -22,6 +22,7 @@
     $("a").addClass("waves-effect");
 
     $('.button-collapse').sideNav();
+    $('.modal').modal();
     $('.parallax').parallax();
     $('select').material_select();
     $('.datepicker').pickadate({

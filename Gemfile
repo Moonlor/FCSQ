@@ -27,6 +27,11 @@ gem 'json'
 #Active job & sidekiq
 gem 'sidekiq'
 
+#Alipay
+gem 'alipay', '~> 0.15.0'
+gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
+
+
 group :development, :test do
   gem 'listen', '~>3.1.5'
   gem 'sqlite3', '~>1.3.13'

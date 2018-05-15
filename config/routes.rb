@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :schedules,     only: [:create, :destroy, :index, :update]
   resources :via_city_names,only: :new
+  resources :orders,        only: :create
 
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

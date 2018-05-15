@@ -1,5 +1,7 @@
 .bundle/
 
+*.idea
+
 *.rbc
 capybara-*.html
 .rspec

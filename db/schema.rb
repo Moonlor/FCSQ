@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403165322) do
+ActiveRecord::Schema.define(version: 20180514142031) do
 
   create_table "microposts", force: :cascade do |t|
     t.string "content"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20180403165322) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "status", default: 0
+    t.float "amount", default: 0.0
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
