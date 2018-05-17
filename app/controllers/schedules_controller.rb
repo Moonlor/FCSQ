@@ -14,11 +14,9 @@ class SchedulesController < ApplicationController
     all_city = []
     city_check = true
 
-    if params[:via_city_number] != 0 and params.include?(:via_city_name)
+    if params[:schedule][:via_city_number] != 0 and params.include?(:via_city_name)
       all_city = params[:via_city_name][:names]
     end
-
-    pp all_city, params[:schedule][:depart_city], params[:schedule][:final_city]
 
     if not params[:schedule][:depart_city].nil? and all_city.include?(params[:schedule][:depart_city])
       flash.now[:error] = "途经城市中不能包含出发城市！"
@@ -33,6 +31,13 @@ class SchedulesController < ApplicationController
     if all_city.length > all_city.uniq.length
       flash.now[:error] = "存在重复的途经城市！"
       city_check = false
+    end
+    
+    if not params[:schedule][:final_city].nil? and not params[:schedule][:depart_city].nil?
+      if params[:schedule][:via_city_number] == "0" and params[:schedule][:final_city] == params[:schedule][:depart_city]
+        flash.now[:error] = "存在出发城市直达同一到达城市！"
+        city_check = false
+      end
     end
 
     if city_check and @schedule.save
