@@ -27,3 +27,16 @@
 #hotel-card .card-content { background: rgba(0, 0, 0, 0.25); }
 #hotel-card p { font-size: 1.5rem; }
 /*task-card*/
+
+/*rail-card*/
+
+#rail-card .card-header .card-title { padding: 20px; }
+#rail-card .rail-card-title { margin: 0; font-weight: 300; }
+#rail-card .rail-card-date { font-size: 1.1rem; margin: 0; }
+#rail-card .rail-state { padding-bottom: 15px; }
+#rail-card .rail-state-two { border-left: 1px dashed #fafafa; }
+#rail-card .rail-state-one { border-right: 1px dashed #fafafa; }
+  
+#rail-card .card-content { background: rgba(0, 0, 0, 0.25); }
+#rail-card p { font-size: 1.5rem; }
+/*task-card*/

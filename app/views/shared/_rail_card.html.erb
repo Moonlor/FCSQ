@@ -1,0 +1,47 @@
+<div id="rail-card" class="card">
+  <div class="card-header green accent-2">
+    <div class="card-title">
+      <h5 class="rail-card-title center-align">火车</h5>
+      </h6>
+    </div>
+  </div>
+  <div class="card-content-bg white-text">
+    <div class="card-content">
+
+      <div class="row rail-state-wrapper">
+        <div class="col s5 m5 l5 center-align rail-state-one">
+          <div class="rail-state">
+            <h4 class="margin"><%= rail_card['dept_city'] %></h4>
+          </div>
+          <div class="rail-info">
+            <p class="small">
+              <%= rail_card['dept_date'] %></p>
+          </div>
+        </div>
+        <div class="col s2 m2 l2 center-align">
+          <i class="material-icons md-48 ">train</i>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          --->
+        </div>
+        <div class="col s5 m5 l5 center-align rail-state-two">
+          <div class="rail-state">
+            <h4 class="margin"><%= rail_card['arv_city'] %></h4>
+          </div>
+          <div class="rail-info">
+              <p class="small">------</p> 
+        </div>
+      </div>  
+      <div class="row rail-state-wrapper">
+	<div class="col s12 m12 l12 center-align">
+          <div class="rail-state">
+            <p class="small">行程较短，请自行选择火车快捷前往</p>
+          </div>
+	</div>
+      </div>
+  </div>
+</div>
+  </div>
