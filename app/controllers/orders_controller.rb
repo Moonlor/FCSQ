@@ -30,11 +30,11 @@ class OrdersController < ApplicationController
 
     u = @client.page_execute_url(
         method: 'alipay.trade.page.pay',
-        quit_url: user_path(@current_user),
+        quit_url: 'https://www.baidu.com',
         biz_content: {
-            out_trade_no: '20169501000230',
+            out_trade_no: '20069501990230',
             product_code: 'FAST_INSTANT_TRADE_PAY',
-            total_amount: '10000',
+            total_amount: '200000',
             subject: 'test'
         }.to_json(ascii_only: true), # to_json(ascii_only: true) is important!
         timestamp: '2016-04-01 00:00:00'
