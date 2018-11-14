@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= render 'layouts/shim' %>
@@ -15,7 +16,7 @@
   <body>
     <%= render 'layouts/header' %>
     <!-- To do: add falsh.empty? -->
-    <div class="container" style="padding-top: 30px">
+    <div class="container" style="padding-top: 0px">
         <% flash.each do |key, value| %>
       <div>
         <script type="text/javascript">

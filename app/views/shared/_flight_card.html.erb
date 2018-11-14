@@ -1,3 +1,5 @@
+<% prediction_id = rand(999999999999) %>
+
 <div id="flight-card" class="card">
   <div class="card-header orange accent-2">
     <div class="card-title">
@@ -5,8 +7,12 @@
       <h6 class="center-align"> ---------------------------- </h6>
       <h6 class="flight-card-date center-align">价格: ￥<%= flight_card['price'] %> | 航空公司:  <%= flight_card['airline'] %></h6>
       <h6></h6>
-      <h6 class="flight-card-date center-align"> <a href="<%= flight_url(flight_card['dept_city'], flight_card['arv_city'], flight_card['arv_date']) %>">
-      点击预订本次航班</a>
+      <h6 class="flight-card-date center-align">
+        <a href="<%= flight_url(flight_card['dept_city'], flight_card['arv_city'], flight_card['arv_date']) %>" class="waves-effect waves-light btn">
+        点击预订本次航班</a>
+        <!--<a class="waves-effect waves-light btn" href="schedules//flight_query">查看该航班价格预测</a>-->
+        <%= link_to "查看该航班价格预测", {:action => 'flight_query', :info => {:flight_id => flight_card['flight_id'], :date => flight_card['dept_date']}}, :class => 'waves-effect, waves-light btn' %>
+        <!--<a class="waves-effect waves-light btn" >查看该航班价格预测</a>-->
       </h6>
     </div>
   </div>
@@ -16,36 +22,36 @@
         <div class="col s5 m5 l5 center-align flight-state-one">
           <div class="flight-state">
             <h4 class="margin"><%= flight_card['dept_city'] %></h4>
-            <p class="ultra-small"><%= flight_card['dept_airport'] %></p>
+            <p><%= flight_card['dept_airport'] %></p>
           </div>
           <div class="flight-info">
-            <p class="small">
+            <p style="padding: 0rem">
               <%= flight_card['dept_date'] %>
-              <%= flight_card['dept_time'] %></p>
+              <%= flight_card['dept_time'] %>
+            </p>
           </div>
         </div>
         <div class="col s2 m2 l2 center-align">
-          <i class="material-icons md-48 ">flight_takeoff</i>
+          <i class="material-icons md-48">flight_takeoff</i>
           <br>
           <br>
           <br>
           <br>
-
           --->
         </div>
         <div class="col s5 m5 l5 center-align flight-state-two">
           <div class="flight-state">
             <h4 class="margin"><%= flight_card['arv_city'] %></h4>
-            <p class="ultra-small"><%= flight_card['arv_airport'] %></p>
-            
+            <p ><%= flight_card['arv_airport'] %></p>
           </div>
           <div class="flight-info">
-              <p class="small">
+            <p style="padding: 0rem">
               <%= flight_card['arv_date'] %>  
-              <%= flight_card['arv_time'] %></p>
+              <%= flight_card['arv_time'] %>
+            </p>
           </div>
         </div>
       </div>  
+    </div>
   </div>
 </div>
-  </div>

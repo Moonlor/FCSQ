@@ -1,6 +1,6 @@
 <div class="divider"></div>
 <div id="query_for_schedule_status_flag"></div>
-<div class="card-panel cyan lighten-5">
+<div class="card-panel grey lighten-4">
 
 <li id="schedule_item_<%= schedule_item.id %>">
   <input class="<%= schedule_item.status %>" type="hidden" value= <%= schedule_item.id %> />
@@ -22,10 +22,11 @@
           <h5 class="center-align" >最低总价： ¥<%= min_cost %></h5>
         </span>
 
-	<ul class="collapsible cyan lighten-4" data-collapsible="expandable">
+	      <ul class="collapsible popout grey lighten-4" data-collapsible="expandable">
           <li>
-            <h5 class="collapsible-header cyan lighten-4 center-align">
-	      出行路线：
+            <h5 class="collapsible-header cyan lighten-5 center-align" style="margin-top: 0px; margin-bottom: 0px;
+            ">
+              出行路线：
               <% for each in plan['plan1'][0]['flight'] %>
                 <%= each['dept_city'] %>
                 <% break %>
@@ -38,11 +39,11 @@
                 <% end %>
               <% end %>
             </h5>
-            <div class="collapsible-body cyan lighten-4">
+            <div class="collapsible-body cyan lighten-5">
               <%= render partial: 'schedules/result_feed', object: plan %>
             </div>
           </li>
-	</ul>
+	      </ul>
       <% else %>
         <span>
           <h5 class="center-align" >行程编号： <%= schedule_item.id %></h5>
@@ -55,22 +56,22 @@
     <% end %>
   </div>
   <div class="divider"></div>
-  <ul class="row">
-    <li class="col s8 status">
-      <span>
-        <p id = "<%= schedule_item.id %>_result">当前状态： ---- <%= schedule_item.status_in_words %> ---- </p>
-      </span>
-      <span class="timestamp">
-        <p id = "<%= schedule_item.id %>_timestamp">计算开始于 <%= time_ago_in_words(schedule_item.created_at) %> 之前</p>
-      </span>
-    </li>
-    <li class="col s4 delete">
-      <div class="row"></div>
-      <% if current_user?(schedule_item.user) %>
-        <%= button_to "删除", schedule_item, method: :delete, data: { confirm: "该操作无法撤销，确认？" }, class: "btn btn-large btn-primary"%>
-      <% end %>
-    </li>
-  </ul>
+    <ul class="row">
+      <li class="col s8 status">
+        <span>
+          <p id = "<%= schedule_item.id %>_result">当前状态： ---- <%= schedule_item.status_in_words %> ---- </p>
+        </span>
+        <span class="timestamp">
+          <p id = "<%= schedule_item.id %>_timestamp">计算开始于 <%= time_ago_in_words(schedule_item.created_at) %> 之前</p>
+        </span>
+      </li>
+      <li class="col s4 delete">
+        <div class="row"></div>
+        <% if current_user?(schedule_item.user) %>
+          <%= button_to "删除", schedule_item, method: :delete, data: { confirm: "该操作无法撤销，确认？" }, class: "btn btn-large btn-primary"%>
+        <% end %>
+      </li>
+    </ul>
 </li>
 </div>
 

@@ -11,7 +11,7 @@
         <div class="col s12 m12 l12 center-align ">
           <div class="hotel-state">
             <h4 class="margin">¥<%= hotel_card['hotel_price'] %></h4>
-            <p class="ultra-small"><%= hotel_card['hotel_address'] %></p>
+            <h6><%= hotel_card['hotel_address'] %></h6>
           </div>
         </div>
       </div> 
@@ -20,13 +20,13 @@
         <div class="col s12 m12 l12 center-align ">
           <div class="hotel-state">
             <h5 class="margin"><%= hotel_card['user_number'] %> 个评价 : <%= hotel_card['hotel_comment'] %></h5>
-            <p class="ultra-small"><%= hotel_card['dept_airport'] %></p>
+            <h6><%= hotel_card['dept_airport'] %></h6>
           </div>
           <div class="hotel-info">
-            <p class="small">
+            <h5>
               评分: <%= hotel_card['hotel_score'] %>
               <br>
-              <%= hotel_card['user_recommend'] %>% 的顾客推荐</p>
+              <%= hotel_card['user_recommend'] %>% 的顾客推荐</h5>
           </div>
         </div>
       </div>

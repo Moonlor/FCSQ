@@ -122,7 +122,11 @@ class SchedulesController < ApplicationController
     end
   end
 
-
+  def flight_query
+    pp "================================"
+    pp params
+    pp "================================"
+  end
 
 
   private
