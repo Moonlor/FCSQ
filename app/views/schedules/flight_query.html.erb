@@ -3,15 +3,27 @@
   <div class="col s12 m12">
     <div class="card">
       <div class="card-image">
-        <img src="http://cdn.regeneration.cn/1504970092001.jpeg">
-        <span class="card-title black-text "><h3> 价格预测结果 </h3></span>
+        <img src="http://cdn.regeneration.cn/1504970092006.jpeg">
+        <span class="card-title black-text "><h3> <%= params['info']['flight_id'] %> 航班价格预测结果 </h3></span>
       </div>
       <div class="card-content">
-        <p><%= params %></p>
         <canvas id="myChart" width="800" height="400"></canvas>
       </div>
       <div class="card-action">
-        <a href="#">这是一个链接</a>
+        <div class="collection ">
+          <a href="#!" class="collection-item black-text"><span class="new badge" data-badge-caption="11月2日 ～ 11月8日"></span>建议购买时间段 : </a>
+          <a href="#!" class="collection-item black-text"><span class="new badge" data-badge-caption="75%"></span>在该时间段内，您买到低价票的价格的概率为</a>
+          <a href="#!" class="collection-item black-text"><span class="new badge blue" data-badge-caption="¥ 760"></span>航班历史最低价</a>
+          <a href="#!" class="collection-item black-text"><span class="new badge blue" data-badge-caption="¥ 1440"></span>航班历史最高价</a>
+          <a href="#!" class="collection-item black-text">
+            <span class="new badge blue" data-badge-caption="准点率高 : 87%"></span>
+            <span class="new badge blue" data-badge-caption="非廉价航班"></span>
+            <span class="new badge blue" data-badge-caption="非红眼航班"></span>
+            <span class="new badge red" data-badge-caption="经停"></span>
+            <span class="new badge red" data-badge-caption="到达时间晚"></span>
+            航班标签
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +43,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [1055,1169,818,1157,1035,839,1149,1044,1192,1039,1162,878,1081,948,1110,1045,844,1171,1199,1191,855,1175,1011,1074,1180,876,877,1133,1132,992,1197,1029,927]
+                    data: [1055,1055,818,818,1035,839,839,839,1192,1192,1192,948,1081,948,1110,1110,1110,1110,1199,1191,1199,1199,1199,1074,1180,876,877,1199,1132,1199,1197,1029,927]
                 }
             ]
         };

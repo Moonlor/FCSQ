@@ -5,7 +5,12 @@
 
     <%= render 'shared/error_messages', object: f.object %>
 
-    <section class="col s12"><h5>基础选项</h3></section>
+    <section class="col s12"><h5>个人标签</h5></section>
+    <div>
+      <div class="chips chips-initial"></div>
+    </div>
+
+    <section class="col s12"><h5>基础选项</h5></section>
     <div class="input-field col s6">
   	  <%= f.select(:depart_city, cities) %>
       <label>出发城市</label>
@@ -36,8 +41,7 @@
       </section>
     </div>
 
-
-    <section class="col s12"><h5>航班定制选项</h3></section>
+    <section class="col s12"><h5>航班定制选项</h5></section>
     <div>
       <section class="col s12"><p style="height: 5px"></p></section>
       <section class="col s6">
@@ -89,7 +93,7 @@
     
 
 
-    <section class="col s12"><h5>酒店定制选项</h3></section>
+    <section class="col s12"><h5>酒店定制选项</h5></section>
     <section class="col s12"><p style="height: 10px"></p></section>
     <div>
       <div class="input-field col s6">
@@ -142,6 +146,19 @@
   $(document).ready(function(){
     $('span#count').hide();
     $('input#schedule_via_city_number').val(0);
+    $('.chips').material_chip();
+
+    $('.chips-initial').material_chip({
+        data: [{
+            tag: '价格敏感',
+        }, {
+            tag: '不喜欢早起',
+        }],
+      });
+      $('.chips-placeholder').material_chip({
+          placeholder: '添加个人标签',
+          secondaryPlaceholder: '添加个人标签',
+      });
   });
   
   $('input#schedule_ontime_rate').mouseup(function(){
